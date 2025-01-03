@@ -14,28 +14,52 @@ public class Banking {
 
   private static int getUserOption(Scanner scanner) {
     System.out.print("선택> ");
-    return scanner.nextInt();
+    int n = Integer.parseInt(scanner.nextLine());
+    return n;
   }
 
   private static int getUserDeposit(Scanner scanner) {
     System.out.print("예금> ");
-    return scanner.nextInt();
+    int n = Integer.parseInt(scanner.nextLine());
+    System.out.println();
+    return n;
   }
 
   private static int getWithdrawl(Scanner scanner) {
     System.out.print("출금> ");
-    return scanner.nextInt();
+    int n = Integer.parseInt(scanner.nextLine());
+    System.out.println();
+    return n;
+  }
+
+  private static void printBalance(int balance) {
+    System.out.println("잔고> " + balance);
+    System.out.println();
   }
 
   public static void main(String[] args) {
-    printCols();
     Scanner scanner = new Scanner(System.in);
-    int opt = getUserOption(scanner);
-    int deposit = getUserDeposit(scanner);
-    opt = getUserOption(scanner);
-    int withdrawl = getWithdrawl(scanner);
-    deposit -= withdrawl;
 
+    int opt = 0;
+    int balance = 0;
+
+    while (opt != 4) {
+      printCols();
+      opt = getUserOption(scanner);
+
+      if (opt == 1) {
+        int deposit = getUserDeposit(scanner);
+        balance += deposit;
+      } else if (opt == 2) {
+        int withdrawal = getWithdrawl(scanner);
+        balance -= withdrawal;
+      } else if (opt == 3) {
+        printBalance(balance);
+      }
+
+    }
+
+    System.out.println("프로그램 종료");
     scanner.close();
   }
 }
