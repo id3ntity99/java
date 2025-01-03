@@ -12,7 +12,9 @@ public class Test05 {
     scanner.close();
 
     if (MIN_EARLIER > min) {
-      hour--; // TODO: Consider 00:00
+      if (hour == 0)
+        hour = 24;
+      hour--;
       min = 60 - (MIN_EARLIER - min);
     } else {
       min -= MIN_EARLIER;
