@@ -12,6 +12,8 @@ public class ArrayTest {
     System.out.println(arr2);
     System.out.println(arr3);
 
+    System.out.println("===============================================================");
+
     // 배열값 참조
     System.out.println("arr1[0] :" + arr1[0]);
     System.out.println("arr1[2] :" + arr1[2]);
@@ -22,10 +24,14 @@ public class ArrayTest {
     System.out.println("arr3[3] :" + arr3[3]);
     System.out.println("arr3[4] :" + arr3[4]);
 
+    System.out.println("===============================================================");
+
     // 배열의 길이
     System.out.println("Length of arr1: " + arr1.length);
     System.out.println("Length of arr2: " + arr2.length);
     System.out.println("Length of arr3: " + arr3.length);
+
+    System.out.println("===============================================================");
 
     // 배열의 반복문
     for (int i = 0; i < arr1.length; i++) {
@@ -44,6 +50,8 @@ public class ArrayTest {
       System.out.printf("arr3[%d] = %s\n", j, arr3[j]);
     }
 
+    System.out.println("===============================================================");
+
     // 1차원 배열
     int[] scores = {80, 60, 78, 62, 92};
     int total = 0;
@@ -51,6 +59,8 @@ public class ArrayTest {
       total += score;
     }
     System.out.println(total);
+
+    System.out.println("===============================================================");
 
     // 2차원 배열
     int[][] twoDimArr = {{10, 20, 30}, {1, 2, 3, 4}, {100, 200}, {3, 6, 1, 1, 4, 7, 8, 0}};
@@ -60,7 +70,16 @@ public class ArrayTest {
       }
     }
 
+    System.out.println("===============================================================");
+
     // 3차원 배열
     int[][][] threeDimArr = {{{1}, {2}, {3}}, {{23, 6, 61, 135}, {2, 14, 6, 134}}};
+    for (int i = 0; i < threeDimArr.length; i++) {
+      for (int j = 0; j < threeDimArr[i].length; j++) {
+        for (int k = 0; k < threeDimArr[i][j].length; k++) {
+          System.out.println(threeDimArr[i][j][k]);
+        }
+      }
+    }
   }
 }
