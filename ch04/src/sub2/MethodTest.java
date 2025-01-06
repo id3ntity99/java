@@ -1,5 +1,7 @@
 package sub2;
 
+import helper.Delimiter;
+
 /**
  * 날짜: 2025/01/06 이름: 이현민 내용: Java 메서드 실습하기
  */
@@ -15,9 +17,27 @@ public class MethodTest {
     return y;
   }
 
+  public static int sum(int start, int end) {
+    int tot = 0; // Local variable; A variable declared inside of a method. When the method returns
+                 // and/or is escaped, the local var is deleted from the stack.
+    for (int i = start; i < end; i++) {
+      tot += i;
+    }
+    return tot;
+  }
+
   // Main method; Entry point of java program
   public static void main(String[] args) {
     int y = fx(3);
     System.out.printf("f(x) = 2x + 3,\nf(3) = %d\n", y);
+    Delimiter.print();
+
+    // Local variable and method
+    int t1 = sum(1, 10);
+    int t2 = sum(1, 100);
+
+    System.out.println("t1 = " + t1);
+    System.out.println("t2 = " + t2);
+    Delimiter.print();
   }
 }
