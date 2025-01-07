@@ -14,19 +14,15 @@ public class Test08 {
     BufferedWriter bw = new BufferedWriter(out);
     int t = Integer.parseInt(br.readLine());
 
+    // Get inputs and do calculation
     for (int i = 0; i < t; i++) {
       String s = br.readLine();
       int x = Integer.parseInt(s.split(" ")[0]);
       int y = Integer.parseInt(s.split(" ")[1]);
-      bw.write(String.valueOf(x + y));
+      String res = String.format("Case #%d: %d + %d = %d", i + 1, x, y, x + y);
+      bw.write(res);
       bw.newLine();
     }
-    br.reset();
-
-    for (int j = 0; j < t; j++) {
-      String s = br.readLine();
-      int x = Integer.parseInt(s.split(" ")[0]);
-      int y = Integer.parseInt(s.split(" ")[1]);
-    }
+    bw.flush();
   }
 }
