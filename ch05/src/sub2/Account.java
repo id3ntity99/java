@@ -8,8 +8,8 @@ public class Account {
   private String name;
   private int balance;
 
-  public Account(int balance) {
-    this.balance = balance;
+  public Account() {
+    // Empty constructor. Use setter
   }
 
   // Methods
@@ -19,22 +19,6 @@ public class Account {
 
   public void withdraw(int amount) {
     this.balance -= amount;
-  }
-
-  public String getBank() {
-    return bank;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public int getBalance() {
-    return balance;
   }
 
   public void setBank(String bank) {
@@ -47,6 +31,10 @@ public class Account {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public void setBalance(int balance) {
+    this.balance = balance;
   }
 
   public void print() {
