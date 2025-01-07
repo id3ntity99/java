@@ -26,7 +26,7 @@ public class EncapsuleTest {
     car.show();
 
     car.setName("Grandeur");
-    car.setColor("Black");
+    car.setColor("Gray");
 
     String newName = car.getName();
     String newColor = car.getColor();
@@ -34,13 +34,22 @@ public class EncapsuleTest {
     System.out.println("Changed color: " + newColor);
 
     // Initialize Account object with encapsulation.
-    Account myAcc = new Account(23000);
+    Account myAcc = new Account();
     myAcc.setBank("우리은행");
     myAcc.setId("110-11-1211");
     myAcc.setName("김춘추");
+    myAcc.setBalance(23000);
 
     myAcc.deposit(2000);
     myAcc.withdraw(10000);
+
+    myAcc.print();
+
+    // Then, change the account information using setters.
+    myAcc.setBank("국민은행");
+    myAcc.setId("110-22-2122");
+    myAcc.setName("김유신");
+    myAcc.setBalance(1000000);
 
     myAcc.print();
   }
