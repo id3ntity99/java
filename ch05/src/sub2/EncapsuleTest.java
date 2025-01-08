@@ -52,5 +52,46 @@ public class EncapsuleTest {
     myAcc.setBalance(1000000);
 
     myAcc.print();
+
+    // Book calss for library management.
+    Book book = new Book("삼국지", "나관중", "10001", 10);
+    boolean isAvailable = book.borrowBook();
+    if (isAvailable)
+      System.out.println("Borrowed Successfully");
+    else
+      System.out.println("Failed Borrowing " + book.getTitle());
+    book.show();
+    book.returnBook();
+    book.show();
+
+    book.setTitle("Computer System: A Programmer's Perspective");
+    book.setAuthor("David R. O'Hallaron, et al");
+    book.setIsbn("10002");
+    book.setAvailableCopies(0);
+
+    boolean isBorrowed = book.borrowBook();
+    if (isBorrowed)
+      System.out.println("Borrowed Successfully");
+    else
+      System.out.println("Failed Borrowing " + book.getTitle());
+
+    book.show();
+
+    // Use movie class
+    Movie movie = new Movie("Avengers", "Russo Borthers", 4.9, 100);
+    boolean isReserved = movie.reserveSeat();
+    if (isReserved)
+      System.out.println("Reserved Successfully");
+    else
+      System.out.println("Failed reserving " + movie.getTitle());
+    movie.showDetails();
+
+    Movie movie2 = new Movie("Titanic", "James Cameron", 4.9, 0);
+    isReserved = movie2.reserveSeat();
+    if (isReserved)
+      System.out.println("Reserved Successfully");
+    else
+      System.out.println("Failed reserving " + movie2.getTitle());
+    movie2.showDetails();
   }
 }
