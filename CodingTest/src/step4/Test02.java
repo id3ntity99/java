@@ -13,12 +13,10 @@ public class Test02 {
     }
     sc.close();
 
-    int cnt = 0;
     for (int i = 0; i < n; i++) {
       if (buf[i] < x) {
-        System.out.print(buf[i]);
+        System.out.print(buf[i] + " ");
       }
-
     }
   }
 }
