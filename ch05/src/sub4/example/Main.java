@@ -8,5 +8,7 @@ public class Main {
     System.out.println(hash);
     System.out.println(calc.toHex().toUpperCase());
 
+    int r = (int) Math.floor(Math.random() * Integer.MAX_VALUE);
+    System.out.println(r);
   }
 }
