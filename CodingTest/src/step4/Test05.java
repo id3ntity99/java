@@ -5,12 +5,20 @@ import java.util.Scanner;
 public class Test05 {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int total = sc.nextInt();
-    int iter = sc.nextInt();
-    int[] basckets = new int[total];
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    int[] buf = new int[n];
 
-    for (int i = 0; i < iter; i++) {
-
+    for (int i = 0; i < m; i++) {
+      int startIdx = sc.nextInt() - 1;
+      int endIdx = sc.nextInt() - 1;
+      int ballNum = sc.nextInt();
+      for (int j = startIdx; j <= endIdx; j++) {
+        buf[j] = ballNum;
+      }
     }
+
+    for (int num : buf)
+      System.out.print(num + " ");
   }
 }
