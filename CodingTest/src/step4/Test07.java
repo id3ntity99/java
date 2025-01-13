@@ -62,9 +62,9 @@ public class Test07 {
 
     sort(inBuf);
 
-    for (int i = 0; i < inBuf.length; i++) {
+    for (int i = 0; i < arr.length; i++) {
       boolean isContained = search(arr[i], inBuf);
-      if (!isContained) {
+      if (!isContained) {// TODO: the condition is not satisfied perhaps...
         System.out.println(arr[i]);
       }
     }
