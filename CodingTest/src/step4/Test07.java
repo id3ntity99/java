@@ -57,14 +57,11 @@ public class Test07 {
     int[] arr = initArray(30); // Initialize an array that contains numbers from 1 to 30.
     int[] inBuf = initArray(28, new Scanner(System.in)); // Get all user input in an array
 
-
-    // TODO: Program doesn't work when input = {1, 2, 3, 4, 5, ...., 27, 28}
-
     sort(inBuf);
 
     for (int i = 0; i < arr.length; i++) {
       boolean isContained = search(arr[i], inBuf);
-      if (!isContained) {// TODO: the condition is not satisfied perhaps...
+      if (!isContained) {
         System.out.println(arr[i]);
       }
     }
