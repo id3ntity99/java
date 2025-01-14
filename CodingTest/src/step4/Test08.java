@@ -27,7 +27,6 @@ public class Test08 {
 
 
     // count duplicated elements from the buf
-    int[] temp = new int[buf.length];
     int counter = 0;
     for (int j = 0; j < buf.length - 1; j++) {
       if (buf[j] == buf[j + 1]) {
