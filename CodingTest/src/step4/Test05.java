@@ -17,6 +17,7 @@ public class Test05 {
         buf[j] = ballNum;
       }
     }
+    sc.close();
 
     for (int num : buf)
       System.out.print(num + " ");
