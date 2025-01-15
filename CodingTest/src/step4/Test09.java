@@ -14,19 +14,17 @@ public class Test09 {
       buf[i] = i + 1;
     }
 
-    for (int k = 0; k < m; k++) {
-      int start = sc.nextInt() - 1;
-      int end = sc.nextInt() - 1;
-      // TODO: The code below works for sub-array x for which x1 < x2 < x3 ....
-      for (int i = start; i < end - 1; i++) {
-        int key = buf[i];
-        int j = i + 1;
-        while (j <= end && key < buf[j]) {
-          int tmp = buf[j];
-          buf[j] = key;
-          buf[j - 1] = tmp;
-          j++;
-        }
+    for (int i = 0; i < m; i++) {
+      int startIdx = sc.nextInt() - 1;
+      int endIdx = sc.nextInt() - 1;
+      int length = endIdx - startIdx + 1;
+      int midIdx = startIdx + (length / 2);
+
+      for (int j = startIdx; j < midIdx; j++) {
+        int temp = buf[j];
+        int dest = buf[endIdx];
+        buf[j] = buf[endIdx];
+        buf[endIdx--] = temp;
       }
     }
     sc.close();
