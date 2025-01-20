@@ -1,46 +1,40 @@
 package thread;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.Closeable;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
-public class DummyFileReader implements Closeable {
-  private FileInputStream fileIn;
-  private InputStreamReader in;
-  private FileOutputStream fileOut;
-  private OutputStreamWriter out;
-  private BufferedReader reader;
-  private BufferedWriter writer;
+public class DummyFileReadWrite implements Closeable, Runnable {
+  private final FileInputStream fileIn;
+  private final FileOutputStream fileOut;
 
-  public DummyFileReader(File source, File dest) throws Exception {
-    fileIn = new FileInputStream(source);
-    in = new InputStreamReader(fileIn);
-    fileOut = new FileOutputStream(dest);
-    out = new OutputStreamWriter(fileOut);
-    reader = new BufferedReader(in);
-    writer = new BufferedWriter(out);
+  public DummyFileReadWrite(FileInputStream in, FileOutputStream out) {
+    this.fileIn = in;
+    this.fileOut = out;
   }
 
-  public void read() throws IOException {
-    char[] buf = new char[512];
-    reader.read(buf);
-    writer.write(buf);
-    writer.flush();
+  /*
+   * TODO: How to run while loop in multi-threaded environment?
+   */
+  @Override
+  public void run() {
+    System.out.println(
+        Thread.currentThread().getName() + " is copying the source file into the dest file...");
+    try {
+      while (fileIn.available() > 0) {
+        byte[] bytes = fileIn.readNBytes(512);
+        fileOut.write(bytes);
+        fileOut.flush();
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
   public void close() throws IOException {
     fileIn.close();
-    in.close();
     fileOut.close();
-    out.close();
-    reader.close();
-    writer.close();
   }
 }
