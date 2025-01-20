@@ -1,29 +1,37 @@
 package thread;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ThreadExample {
   public static void main(String[] args) {
-    String srcPath = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\ch10\\src\\example\\dummy.txt";
-    File src = new File(srcPath);
-
-    String destPath = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\ch10\\src\\example\\copy.txt";
-    File dest = new File(destPath);
-    try (DummyFileReader reader = new DummyFileReader(src, dest)) {
-      Runnable runnable = new DummyThread(reader);
-      Thread dt1 = new Thread(runnable);
-      Thread dt2 = new Thread(runnable);
-      Thread dt3 = new Thread(runnable);
-
-      dt1.start();
-      dt2.start();
-      dt3.start();
+    String src = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\examples\\src\\thread\\dummy.txt";
+    String dest =
+        "C:\\Users\\lotte6\\Desktop\\workspace\\java\\examples\\src\\thread\\dummy_copy.txt";
 
 
-      dt1.join();
-      dt2.join();
-      dt3.join();
-    } catch (Exception e) {
+    /*
+     * TODO: Guess both FileInputStream and FileOutputStream are thread-safe
+     */
+    try (FileInputStream in = new FileInputStream(src);
+        FileOutputStream out = new FileOutputStream(dest)) {
+      DummyFileReadWrite readWrite = new DummyFileReadWrite(in, out);
+      Thread thread1 = new Thread(readWrite);
+      Thread thread2 = new Thread(readWrite);
+      Thread thread3 = new Thread(readWrite);
+
+      thread1.start();
+      thread2.start();
+      thread3.start();
+
+
+      thread1.join();
+      thread2.join();
+      thread3.join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
