@@ -1,4 +1,4 @@
-package sub4.example;
+package oop;
 
 public class AdlerChecksumCalc extends RollingChecksumCalc {
   public AdlerChecksumCalc(String input) {

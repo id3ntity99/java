@@ -1,4 +1,4 @@
-package sub1.example;
+package generic;
 
 public class IntegerCalculator {
 

@@ -1,4 +1,4 @@
-package sub4.example;
+package oop;
 
 public class RabinFingerprintCalc extends RollingChecksumCalc {
   private static final int PRIME_NUM = 101;
