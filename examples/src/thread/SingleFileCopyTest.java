@@ -3,13 +3,15 @@ package thread;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
 // TODO: Measure execution time
 public class SingleFileCopyTest {
   public static void main(String[] args) {
-    String src = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\examples\\src\\thread\\dummy.txt";
-    String dest = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\examples\\src\\thread\\copy.txt";
-
+    Scanner sc = new Scanner(System.in);
+    String src = sc.nextLine();
+    String dest = sc.nextLine();
+    sc.close();
 
     try (FileInputStream in = new FileInputStream(src);
         FileOutputStream out = new FileOutputStream(dest)) {
@@ -17,7 +19,6 @@ public class SingleFileCopyTest {
       Thread thread1 = new Thread(readWrite);
       Thread thread2 = new Thread(readWrite);
       Thread thread3 = new Thread(readWrite);
-
 
       thread1.start();
       thread2.start();
@@ -28,7 +29,6 @@ public class SingleFileCopyTest {
         thread2.run();
         thread3.run();
       }
-
 
       thread1.join();
       thread2.join();
