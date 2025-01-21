@@ -1,17 +1,19 @@
 package thread;
 
 import java.io.Closeable;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.logging.Logger;
 
 public class DummyFileReadWrite implements Closeable, Runnable {
-  private final FileInputStream fileIn;
-  private final FileOutputStream fileOut;
+  private final InputStream in;
+  private final OutputStream out;
+  private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getName());
 
-  public DummyFileReadWrite(FileInputStream in, FileOutputStream out) {
-    this.fileIn = in;
-    this.fileOut = out;
+  public DummyFileReadWrite(InputStream in, OutputStream out) {
+    this.in = in;
+    this.out = out;
   }
 
   /*
@@ -19,13 +21,14 @@ public class DummyFileReadWrite implements Closeable, Runnable {
    */
   @Override
   public void run() {
-    System.out.println(
-        Thread.currentThread().getName() + " is copying the source file into the dest file...");
+    String message = String.format("%s is copying the srouce file into the destination.",
+        Thread.currentThread().getName());
+    LOGGER.info(message);
     try {
-      while (fileIn.available() > 0) {
-        byte[] bytes = fileIn.readNBytes(512);
-        fileOut.write(bytes);
-        fileOut.flush();
+      while (in.available() > 0) {
+        byte[] bytes = in.readNBytes(512);
+        out.write(bytes);
+        out.flush();
       }
     } catch (IOException e) {
       e.printStackTrace();
@@ -34,7 +37,7 @@ public class DummyFileReadWrite implements Closeable, Runnable {
 
   @Override
   public void close() throws IOException {
-    fileIn.close();
-    fileOut.close();
+    in.close();
+    out.close();
   }
 }
