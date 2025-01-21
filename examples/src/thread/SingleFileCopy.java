@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-// TODO: Refactoring required: MultipleFileCopy and SingleFileCopy
 public class SingleFileCopy implements Runnable {
   private final InputStream in;
   private final OutputStream out;
