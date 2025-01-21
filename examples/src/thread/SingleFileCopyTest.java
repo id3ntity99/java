@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+// TODO: Measure execution time
 public class SingleFileCopyTest {
   public static void main(String[] args) {
     String src = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\examples\\src\\thread\\dummy.txt";
