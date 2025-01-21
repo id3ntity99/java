@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class ThreadExample {
+public class SingleFileCopyTest {
   public static void main(String[] args) {
     String src = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\examples\\src\\thread\\dummy.txt";
     String dest = "C:\\Users\\lotte6\\Desktop\\workspace\\java\\examples\\src\\thread\\copy.txt";
