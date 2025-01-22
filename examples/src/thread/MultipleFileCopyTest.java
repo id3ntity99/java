@@ -32,6 +32,8 @@ public class MultipleFileCopyTest {
     return paths;
   }
 
+  // TODO Retrieve paths of source files from a file named "sources.txt", which contains the paths
+  // of source files and is located at "resources" directory
   private static List<String> getSources(File file) throws FileNotFoundException, IOException {
     InputStreamReader inReader = new InputStreamReader(new FileInputStream(file));
     BufferedReader reader = new BufferedReader(inReader);
