@@ -25,6 +25,8 @@ public class MultipleFileCopy implements Runnable {
         out.write(bytes);
         out.flush();
       }
+      in.close();
+      out.close();
     } catch (IOException e) {
       LOGGER.severe(e.getMessage());
       Thread.currentThread().interrupt();
