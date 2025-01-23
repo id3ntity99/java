@@ -137,4 +137,7 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+# Project-specific ignorances
+ch13/lib/
+
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,maven,gradle
