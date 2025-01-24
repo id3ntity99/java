@@ -1,7 +1,6 @@
 package thread;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,63 +9,53 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 // TODO Measure performance of copying multiple files with multiple threads.
 public class MultipleFileCopyTest {
-  // Get destination from user
-  private static List<String> getSources(Scanner sc) {
-    System.out.print("Source file paths separated by comma: ");
-    String pathString = sc.nextLine();
-    List<String> paths = null;
+  private static Logger LOGGER = Logger.getLogger(MultipleFileCopyTest.class.getName());
 
-    if (pathString.contains(",")) { // split the path string input by comma(,)
-      paths = Arrays.asList(pathString.split(","));
-    } else {
-      paths = new ArrayList<>();
-      paths.add(pathString.trim());
+  // Retrieve paths of source files from a file named "sources.txt", which contains the paths
+  // of source files and is located at "resources" directory
+  private static List<String> getSources(String pathsFile) {
+    List<String> paths = new ArrayList<>();
+
+    try (InputStreamReader inReader = new InputStreamReader(new FileInputStream(pathsFile));
+        BufferedReader reader = new BufferedReader(inReader)) {
+      while (reader.ready()) {
+        String path = reader.readLine().trim();
+        paths.add(path);
+      }
+    } catch (FileNotFoundException e) {
+      String msg = String.format("Exception Raised: %s%nFile not found for %s...%n", e.getMessage(),
+          pathsFile);
+      LOGGER.warning(msg);
+      e.printStackTrace();
+    } catch (IOException e) {
+      LOGGER.severe("IOException Raised...");
+      e.printStackTrace();
     }
     return paths;
   }
 
-  // TODO Retrieve paths of source files from a file named "sources.txt", which contains the paths
-  // of source files and is located at "resources" directory
-  private static List<String> getSources(File file) throws FileNotFoundException, IOException {
-    InputStreamReader inReader = new InputStreamReader(new FileInputStream(file));
-    BufferedReader reader = new BufferedReader(inReader);
-    List<String> paths = null;
-    while (reader.ready()) {
-      String path = reader.readLine();
-    }
-    return null;
-  }
-
   private static String getDestination(Scanner sc) {
-    System.out.println("Destination path: ");
+    System.out.print("Destination path: ");
     String dest = sc.nextLine();
     return dest;
-  }
-
-  private static void trimPaths(List<String> paths) {
-    // Trim every path of the list
-    for (int i = 0; i < paths.size(); i++) {
-      String trimmed = paths.get(i).trim();
-      paths.set(i, trimmed);
-    }
   }
 
   public static void main(String[] args) throws Exception {
     Scanner sc = new Scanner(System.in);
 
-    List<String> paths = getSources(sc);// TODO: Fix getting source file input logic; Get source
-                                        // file paths from a separate file named "source.txt"
+    System.out.print("Path to sources.txt: ");
+    String sourcesPath = sc.nextLine().trim();
+
+    List<String> paths = getSources(sourcesPath);
 
     String dest = getDestination(sc);
-
-    trimPaths(paths);
 
     // Iterate the paths array and spawn new thread per path which copies source file into
     // destination
