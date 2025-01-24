@@ -24,7 +24,8 @@ public class InputHelper {
     return paths;
   }
 
-  public static String getInput(Scanner sc) {
+  public static String getInput(String msg, Scanner sc) {
+    System.out.print(msg);
     return sc.nextLine().trim();
   }
 }

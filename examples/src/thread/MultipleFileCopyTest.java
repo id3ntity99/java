@@ -18,10 +18,8 @@ public class MultipleFileCopyTest {
   public static void main(String[] args) throws InterruptedException, IOException {
     Scanner sc = new Scanner(System.in);
 
-    System.out.print("Path to sources.txt: ");
-    String sourcesPath = InputHelper.getInput(sc);
-    System.out.print("Destination path: ");
-    String dest = InputHelper.getInput(sc);
+    String sourcesPath = InputHelper.getInput("Path to sources.txt: ", sc);
+    String dest = InputHelper.getInput("Destination path: ", sc);
 
     List<String> paths = InputHelper.getSources(sourcesPath);
 
