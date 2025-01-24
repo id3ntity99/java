@@ -24,7 +24,7 @@ public class InputHelper {
     return paths;
   }
 
-  public static String getPathInput(Scanner sc) {
+  public static String getInput(Scanner sc) {
     return sc.nextLine().trim();
   }
 }

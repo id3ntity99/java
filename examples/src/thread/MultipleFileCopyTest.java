@@ -19,9 +19,9 @@ public class MultipleFileCopyTest {
     Scanner sc = new Scanner(System.in);
 
     System.out.print("Path to sources.txt: ");
-    String sourcesPath = InputHelper.getPathInput(sc);
+    String sourcesPath = InputHelper.getInput(sc);
     System.out.print("Destination path: ");
-    String dest = InputHelper.getPathInput(sc);
+    String dest = InputHelper.getInput(sc);
 
     List<String> paths = InputHelper.getSources(sourcesPath);
 
