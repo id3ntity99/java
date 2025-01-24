@@ -33,11 +33,12 @@ public class MultipleFileCopyTest {
       String path = iter.next();
       InputStream in = new FileInputStream(path);
       OutputStream out = new FileOutputStream(dest + "copy" + i++ + ".txt");
-      Runnable copy = new MultipleFileCopy(in, out);
+      AbstractFileCopy copy = new MultipleFileCopy(in, out);
       Thread thread = new Thread(copy);
       thread.start();
-      thread.join();
     }
+
+    Thread.sleep(3000);// Wait until worker threads get their jobs done
 
     Instant finish = Instant.now();
     long timeElapsed = Duration.between(start, finish).toSeconds();
