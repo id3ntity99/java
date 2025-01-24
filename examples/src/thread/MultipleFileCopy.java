@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.logging.Logger;
+import thread.task.AbstractFileCopy;
 
 public class MultipleFileCopy extends AbstractFileCopy {
   private static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getName());

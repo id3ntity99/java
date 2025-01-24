@@ -7,6 +7,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import thread.internal.InputHelper;
+import thread.task.SingleFileCopy;
 
 public class SingleFileCopyTest {
   private static final Logger LOGGER = Logger.getLogger(SingleFileCopyTest.class.getName());

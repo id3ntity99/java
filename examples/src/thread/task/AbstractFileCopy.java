@@ -1,4 +1,4 @@
-package thread;
+package thread.task;
 
 import java.io.InputStream;
 import java.io.OutputStream;

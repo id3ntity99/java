@@ -1,4 +1,4 @@
-package thread;
+package thread.internal;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
-package thread;
+package thread.task;
 
 import java.io.IOException;
 import java.io.InputStream;

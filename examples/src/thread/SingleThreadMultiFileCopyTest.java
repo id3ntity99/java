@@ -11,6 +11,8 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import thread.internal.InputHelper;
+import thread.task.AbstractFileCopy;
 
 public class SingleThreadMultiFileCopyTest {
   private static final Logger LOGGER =
