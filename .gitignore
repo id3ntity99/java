@@ -138,6 +138,6 @@ gradle-app.setting
 *.hprof
 
 # Project-specific ignorances
-ch13/lib/
+*/lib/
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,maven,gradle
