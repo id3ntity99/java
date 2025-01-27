@@ -32,20 +32,20 @@ public class MultipleFileCopy extends AbstractFileCopy implements Callable<Integ
 
   @Override
   public Integer call() throws Exception {
-    byte[] buf = new byte[SIZE];
-    int readBytes = 0;
+    int available = 0;
     try {
       while (in.available() > 0) {
-        readBytes += in.read(buf);
+        byte[] buf = in.readNBytes(SIZE);
         out.write(buf);
         out.flush();
       }
+      available = in.available();
       in.close();
       out.close();
     } catch (IOException e) {
       LOGGER.severe(e.getMessage());
       Thread.currentThread().interrupt();
     }
-    return readBytes;
+    return available;
   }
 }
