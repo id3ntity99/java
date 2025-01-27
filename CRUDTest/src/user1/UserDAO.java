@@ -13,8 +13,8 @@ import java.util.List;
  * DAO means Data Access Object, which is singleton and accesses to database and does CRUD
  * operations.
  */
-public class UserDao {
-  private static UserDao instance = new UserDao();
+public class UserDAO {
+  private static UserDAO instance = new UserDAO();
   private static final String HOST = "jdbc:mysql://localhost:3306/user";
   private static final String USER = "root";
   private static final String PASSWORD = "1234";
@@ -24,7 +24,7 @@ public class UserDao {
   private PreparedStatement psmt = null;
   private ResultSet result = null;
 
-  private UserDao() {
+  private UserDAO() {
     // Empty constructor. This is singleton.
   }
 
@@ -45,7 +45,7 @@ public class UserDao {
   }
 
   // Must be locked under multi-threaded environment to prevent race-condition
-  public static UserDao getInstance() {
+  public static UserDAO getInstance() {
     return instance;
   }
 
@@ -81,8 +81,6 @@ public class UserDao {
         user.setPhoneNum(result.getString(3));
         user.setAge(result.getInt(4));
       }
-
-
     } catch (Exception e) {
       e.printStackTrace();
     }
