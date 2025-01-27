@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +15,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import thread.internal.InputHelper;
 
@@ -42,20 +45,28 @@ public class MultiFileCopyWithThreadPoolTest {
 
     List<Future<Integer>> results = pool.invokeAll(tasks);
 
+    Instant start = Instant.now();
+
     while (true) {
       if (results.getLast().isDone()) {
         for (Future<Integer> result : results) {
-          String msg =
-              String.format("State = %s%nExecution Result = %d%n", result.state(), result.get());
+          String msg = String.format("State = %s%nAvailable Bytes in InputStream = %d%n",
+              result.state(), result.get());
           LOGGER.info(msg);
         }
         break;
       }
     }
 
-    // TODO: Fix that the programm doesn't copy all bytes; only partially
-    pool.shutdown();
+
+    pool.awaitTermination(5, TimeUnit.SECONDS);
     pool.close();
     sc.close();
+
+    Instant finish = Instant.now();
+    long duration = Duration.between(start, finish).toSeconds();
+    String msg = String.format("Time Elapsed = %d\n", duration);
+
+    LOGGER.info(msg);
   }
 }
