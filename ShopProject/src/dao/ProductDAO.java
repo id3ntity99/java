@@ -78,6 +78,4 @@ public class ProductDAO extends DBHelper {
 
     return prod;
   }
-
-  // TODO Implement update, and delete methods
 }
