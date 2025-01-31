@@ -139,6 +139,5 @@ gradle-app.setting
 
 # Project-specific ignorances
 */lib/
-CRUDTest/resources/
-
+*/resources/
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,maven,gradle
