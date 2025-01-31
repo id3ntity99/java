@@ -3,6 +3,7 @@ package thread.task;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+@Deprecated
 public abstract class AbstractFileCopy implements Runnable {
   protected InputStream in;
   protected OutputStream out;
