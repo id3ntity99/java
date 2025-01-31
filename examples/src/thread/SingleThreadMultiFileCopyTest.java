@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import thread.internal.InputHelper;
-import thread.task.AbstractFileCopy;
+import thread.task.MultipleFileCopy;
 
 public class SingleThreadMultiFileCopyTest {
   private static final Logger LOGGER =
@@ -31,7 +31,7 @@ public class SingleThreadMultiFileCopyTest {
       for (String source : sources) {
         InputStream in = new FileInputStream(source);
         OutputStream out = new FileOutputStream(dest + "copy" + i++ + ".txt");
-        AbstractFileCopy task = new MultipleFileCopy(in, out);
+        Runnable task = new MultipleFileCopy(in, out, 8192);
 
         task.run();
 

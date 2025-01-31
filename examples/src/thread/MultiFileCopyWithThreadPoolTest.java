@@ -18,6 +18,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import thread.internal.InputHelper;
+import thread.task.MultipleFileCopy;
 
 public class MultiFileCopyWithThreadPoolTest {
   private static final Logger LOGGER =
@@ -39,7 +40,7 @@ public class MultiFileCopyWithThreadPoolTest {
     for (String path : paths) {
       InputStream in = new FileInputStream(path);
       OutputStream out = new FileOutputStream(dest + "/copy" + counter++ + ".txt");
-      Callable<Integer> task = new MultipleFileCopy(in, out);
+      Callable<Integer> task = new MultipleFileCopy(in, out, 8192);
       tasks.add(task);
     }
 

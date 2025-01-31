@@ -1,4 +1,4 @@
-package thread.task;
+package thread;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,8 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
-import thread.MultipleFileCopy;
 import thread.internal.InputHelper;
+import thread.task.MultipleFileCopy;
 
 public class MultipleFileCopyTest {
   private static final Logger LOGGER = Logger.getLogger(MultipleFileCopyTest.class.getName());
@@ -35,7 +35,7 @@ public class MultipleFileCopyTest {
       String path = iter.next();
       InputStream in = new FileInputStream(path);
       OutputStream out = new FileOutputStream(dest + "copy" + i++ + ".txt");
-      AbstractFileCopy copy = new MultipleFileCopy(in, out);
+      Runnable copy = new MultipleFileCopy(in, out, 8192);
       Thread thread = new Thread(copy);
       thread.start();
     }

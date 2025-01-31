@@ -21,7 +21,7 @@ public class SingleFileCopyTest {
 
     try (FileInputStream in = new FileInputStream(src);
         FileOutputStream out = new FileOutputStream(dest)) {
-      SingleFileCopy copyTask = new SingleFileCopy(in, out);
+      SingleFileCopy copyTask = new SingleFileCopy(in, out, 8192);
       Thread thread1 = new Thread(copyTask);
       Thread thread2 = new Thread(copyTask);
       Thread thread3 = new Thread(copyTask);
