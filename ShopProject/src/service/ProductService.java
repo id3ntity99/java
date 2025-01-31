@@ -7,9 +7,15 @@ import dao.internal.NoSuchProductException;
 import entity.Product;
 
 public class ProductService {
+  private static final ProductService INSTANCE = new ProductService();
+
+  public static ProductService getInstance() {
+    return INSTANCE;
+  }
+
   private final ProductDAO dao = ProductDAO.getInstance();
 
-  public ProductService() {
+  private ProductService() {
     // Empty constructor
   }
 

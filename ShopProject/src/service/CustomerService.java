@@ -1,5 +1,7 @@
 package service;
 
+import java.sql.SQLException;
+import java.util.List;
 import dao.CustomerDAO;
 import entity.Customer;
 
@@ -31,5 +33,9 @@ public class CustomerService {
 
   public void modifyCustomer(Customer customer) {
     dao.updateCustomer(customer);
+  }
+
+  public List<Customer> showCustomers() throws SQLException {
+    return dao.selectCustomers();
   }
 }
