@@ -19,6 +19,10 @@ public class ConnectionUtil {
   private static final String USER;
   private static final String PASS;
 
+  private ConnectionUtil() {
+    // Empty constructor
+  }
+
   static {
     Properties props = new Properties();
     String sep = File.separator;
