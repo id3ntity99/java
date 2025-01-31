@@ -11,7 +11,7 @@ import service.ProductService;
 
 public class ProductController {
   private static final Logger LOGGER = Logger.getLogger(ProductController.class.getName());
-  private final ProductService service = new ProductService();
+  private final ProductService service = ProductService.getInstance();
 
   private Product getProductInput(Scanner sc) {
     sc.nextLine();
