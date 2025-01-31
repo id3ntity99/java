@@ -7,19 +7,19 @@ import java.util.List;
  */
 public interface Accessible<T> {
 
-  public T select(String id);
+  public T select(String id) throws Exception;
 
-  public T select(int id);
+  public T select(int id) throws Exception;
 
-  public List<T> selectAll();
+  public List<T> selectAll() throws Exception;
 
-  public void insert(T entity);
+  public void insert(T entity) throws Exception;
 
-  public void update(String id, T entity);
+  public void update(String id, T entity) throws Exception;
 
-  public void update(int id, T entity);
+  public void update(int id, T entity) throws Exception;
 
-  public void delete(String id);
+  public void delete(String id) throws Exception;
 
-  public void delete(int id);
+  public void delete(int id) throws Exception;
 }
