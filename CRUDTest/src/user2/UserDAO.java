@@ -25,7 +25,7 @@ public class UserDAO {
    */
   private static Properties props;
 
-  static {// Static initialize static fields
+  static {// Static initialize static fields TODO: Inject Properties from AppMain?
     props = new Properties();
     String sep = File.separator;
     String propsPath =
