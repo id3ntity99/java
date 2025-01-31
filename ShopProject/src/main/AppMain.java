@@ -4,6 +4,7 @@ import java.util.Scanner;
 import controller.CustomerController;
 import controller.OrderController;
 import controller.ProductController;
+import entity.Customer;
 
 public class AppMain {
   public static void main(String[] args) {
@@ -13,6 +14,7 @@ public class AppMain {
     Scanner sc = new Scanner(System.in);
 
     boolean isRunning = true;
+    Customer loggedInCustomer = null;
 
     while (isRunning) {
       System.out.println("=============Shop Project=============");
@@ -27,7 +29,7 @@ public class AppMain {
           break;
         }
         case 1: {
-          customerController.manage(sc);
+          loggedInCustomer = customerController.manage(sc);
           break;
         }
         case 2: {
@@ -35,7 +37,7 @@ public class AppMain {
           break;
         }
         case 3: {
-          orderController.manage(sc);
+          orderController.manage(sc, loggedInCustomer);
           break;
         }
         default: {
