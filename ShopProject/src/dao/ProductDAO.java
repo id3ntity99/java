@@ -76,6 +76,8 @@ public class ProductDAO extends DBHelper {
       throw new NoSuchProductException(msg);
     }
 
+    this.close();
+
     return prod;
   }
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import dao.internal.DBHelper;
@@ -59,8 +60,26 @@ public class CustomerDAO extends DBHelper {
     return customer;
   }
 
-  public List<Customer> selectCustomers() {
+  public List<Customer> selectCustomers() throws SQLException {
     List<Customer> customers = new ArrayList<>();
+    this.conn = this.getConnection();
+    this.psmt = conn.prepareStatement(Query.SELECT_CUSTOMERS);
+
+    this.result = psmt.executeQuery();
+
+    while (result.next()) {
+      Customer customer = new Customer();
+      customer.setCustId(result.getString(1));
+      customer.setName(result.getString(2));
+      customer.setHp(result.getString(3));
+      customer.setAddr(result.getString(4));
+      customer.setrDate(result.getString(5));
+
+      customers.add(customer);
+    }
+
+    this.close();
+
     return customers;
   }
 
