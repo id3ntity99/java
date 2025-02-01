@@ -9,13 +9,22 @@ import java.util.List;
 import entity.Movie;
 
 public class MoviesDAO implements Accessible<Movie> {
+  private static final Accessible<Movie> INSTANCE = new MoviesDAO();
+
+  public static Accessible<Movie> getInstance() {
+    return INSTANCE;
+  }
+
+  private MoviesDAO() {
+    // Empty Constructor
+  }
 
   @Override
-  public Movie select(String id) throws SQLException {
+  public Movie select(String name) throws SQLException {
     Movie movie = new Movie();
     try (Connection conn = ConnectionUtil.getConnection();
-        PreparedStatement psmt = conn.prepareStatement(Query.SELECT_MOVIE);) {
-      psmt.setString(1, id);
+        PreparedStatement psmt = conn.prepareStatement(Query.SELECT_MOVIE_WITH_TITLE);) {
+      psmt.setString(1, name);
       ResultSet result = psmt.executeQuery();
       if (result.next()) {
         movie.setMovieId(result.getInt(1));
@@ -31,6 +40,25 @@ public class MoviesDAO implements Accessible<Movie> {
 
   @Override
   public Movie select(int id) throws SQLException {
+    // 이현민 개똥꼬
+    // 하지만 사랑하쥬? ㅋㅋㅋ
+    // 사랑해 이똥꼬;
+    Movie movie = new Movie();
+    try (Connection conn = ConnectionUtil.getConnection();
+        PreparedStatement psmt = conn.prepareStatement(Query.SELECT_MOVIE_WITH_ID);
+        ResultSet result = psmt.executeQuery();) {
+
+      if (result.next()) {
+        movie.setMovieId(result.getInt(1));
+        movie.setTitle(result.getString(2));
+        movie.setGenre(result.getString(3));
+        movie.setReleaseDate(result.getString(4));
+      }
+
+      result.close();
+    } catch (SQLException e) {
+      throw new SQLException(e);
+    }
     return this.select(Integer.toString(id));
   }
 
@@ -72,10 +100,11 @@ public class MoviesDAO implements Accessible<Movie> {
   public void update(String id, Movie entity) throws SQLException {
     try (Connection conn = ConnectionUtil.getConnection();
         PreparedStatement psmt = conn.prepareStatement(Query.UPDATE_MOVIE)) {
-      psmt.setInt(1, entity.getMovieId());
-      psmt.setString(2, entity.getTitle());
-      psmt.setString(3, entity.getGenre());
-      psmt.setString(4, entity.getReleaseDate());
+      psmt.setString(1, entity.getTitle());
+      psmt.setString(2, entity.getGenre());
+      psmt.setString(3, entity.getReleaseDate());
+      psmt.setInt(4, entity.getMovieId());
+
       psmt.executeUpdate();
     } catch (SQLException e) {
       throw new SQLException(e);
