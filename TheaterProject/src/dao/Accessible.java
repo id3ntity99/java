@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -7,19 +8,19 @@ import java.util.List;
  */
 public interface Accessible<T> {
 
-  public T select(String id) throws Exception;
+  public T select(String key) throws SQLException;
 
-  public T select(int id) throws Exception;
+  public T select(int key) throws SQLException;
 
-  public List<T> selectAll() throws Exception;
+  public List<T> selectAll() throws SQLException;
 
-  public void insert(T entity) throws Exception;
+  public void insert(T entity) throws SQLException;
 
-  public void update(String id, T entity) throws Exception;
+  public void update(String key, T entity) throws SQLException;
 
-  public void update(int id, T entity) throws Exception;
+  public void update(int id, T entity) throws SQLException;
 
-  public void delete(String id) throws Exception;
+  public void delete(String key) throws SQLException;
 
-  public void delete(int id) throws Exception;
+  public void delete(int id) throws SQLException;
 }
