@@ -7,7 +7,17 @@ import dao.MoviesDAO;
 import entity.Movie;
 
 public class MoviesService {
+  private static final MoviesService INSTANCE = new MoviesService();
+
+  public static MoviesService getInstance() {
+    return INSTANCE;
+  }
+
   private Accessible<Movie> dao = MoviesDAO.getInstance();
+
+  private MoviesService() {
+    // Empty constructor
+  }
 
   public Movie search(String name) throws SQLException {
     return dao.select(name);
