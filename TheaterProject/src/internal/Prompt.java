@@ -12,11 +12,10 @@ public class Prompt {
 
   private final StringBuilder builder;
 
-
   public Prompt(String title, String[] options, String inputSymbol) {
     this.logo = "";
-    this.title = title;
-    this.inputSymbol = inputSymbol;
+    this.title = title.trim();
+    this.inputSymbol = inputSymbol.trim();
     this.builder = processOptions(options);
   }
 
@@ -31,9 +30,9 @@ public class Prompt {
     StringBuilder sb = new StringBuilder();
     sb.append("|");
     for (int i = 0; i < options.length; i++) {
-      sb.append(String.format(" %d.%s |", i + 1, options[i]));
+      sb.append(String.format(" %d.%s |", i + 1, options[i].trim()));
       if (i == options.length - 1) {
-        sb.append(String.format(" %d.%s ", i + 1, options[i]));
+        sb.append(String.format(" %d.%s ", i + 1, options[i].trim()));
       }
     }
     sb.append("|");
@@ -49,6 +48,6 @@ public class Prompt {
   }
 
   public void printInputSymbol() {
-    System.out.println(inputSymbol + " ");
+    System.out.print(inputSymbol + " ");
   }
 }
