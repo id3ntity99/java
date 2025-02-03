@@ -8,10 +8,6 @@ import internal.Prompt;
 public class AppMain {
   private static final Logger LOGGER = Logger.getLogger(AppMain.class.getName());
 
-  public AppMain() {
-    // TODO Auto-generated constructor stub
-  }
-
   public static void main(String[] args) {
     String[] options = {"Exit", "Movies", "Customers", "Booking"};
 
@@ -33,7 +29,8 @@ public class AppMain {
           break;
         }
         case 2: {
-          MoviesController.getInstance().run(sc);
+          MoviesController controller = new MoviesController();
+          controller.run(sc);
           break;
         }
         case 3: {
