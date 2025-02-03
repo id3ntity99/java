@@ -50,4 +50,10 @@ public class Prompt {
   public void printInputSymbol() {
     System.out.print(inputSymbol + " ");
   }
+
+  public void ask(String question) {
+    if (question.contains(":"))
+      question = question.replace(":", "");
+    System.out.println(question + " " + inputSymbol);
+  }
 }
