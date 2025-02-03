@@ -23,6 +23,10 @@ public class MoviesService {
     return dao.select(name);
   }
 
+  public Movie search(int id) throws SQLException {
+    return dao.select(id);
+  }
+
   public List<Movie> getMovies() throws SQLException {
     return dao.selectAll();
   }
